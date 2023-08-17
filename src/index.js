@@ -1,6 +1,9 @@
 import express from 'express';
 import cron from 'node-cron';
 import { exec } from 'child_process';
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app = express()
 const port = process.env.PORT ?? 4000
