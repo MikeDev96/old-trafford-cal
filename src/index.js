@@ -17,7 +17,7 @@ app.listen(port, () => {
 })
 
 cron.schedule('0 5 * * *', function() {
-  exec('node fetch-events.js', (error, stdout, stderr) => {
+  exec('node src/fetch-events.js', (error, stdout, stderr) => {
       if (error) {
           console.log(`Error: ${error.message}`);
           return;
