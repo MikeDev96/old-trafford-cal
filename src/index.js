@@ -29,3 +29,17 @@ cron.schedule('0 5 * * *', function() {
       console.log(`Stdout: ${stdout}`);
   });
 });
+
+cron.schedule('0 6 * * *', function() {
+  exec('node src/create-money-transfer-cal.js', (error, stdout, stderr) => {
+      if (error) {
+          console.log(`Error: ${error.message}`);
+          return;
+      }
+      if (stderr) {
+          console.log(`Stderr: ${stderr}`);
+          return;
+      }
+      console.log(`Stdout: ${stdout}`);
+  });
+});
