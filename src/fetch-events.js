@@ -7,7 +7,7 @@ fetch("https://api.koobit.com/website/api/en/zzz/event-search?venueId=94&maxResu
   .then(async data => {
     const cal = ical({ name: "Old Trafford Events" })
     for (const ev of data.data["event-cards"]) {
-      const isValid = /^\d{4}-\d{2}-\d{2}$/g.test(ev.schema.startDate)
+      const isValid = /^\d{4}-\d{2}-\d{2}/g.test(ev.schema.startDate)
       if (isValid) {
         let schedule
 
