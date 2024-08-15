@@ -8,9 +8,8 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT ?? 4000
 
-app.get('/', (req, res) => {
-  res.sendFile("resources/calendar.ics", { root: "." })
-})
+app.get('/calendar', (req, res) => res.sendFile("resources/calendar.ics", { root: "." }))
+app.get('/money-transfer', (req, res) => res.sendFile("resources/money-transfer.ics", { root: "." }))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
