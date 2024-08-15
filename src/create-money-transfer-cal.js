@@ -6,17 +6,16 @@ import { DateTime } from "luxon"
 const hd = new Holidays("GB", "ENG")
 const cal = ical({ name: "Mike Money Transfer" })
 
-let dt = DateTime.now().startOf("month").plus({ days: 14 })
+let dt = DateTime.now().startOf("month").plus({ days: 14, hours: 10 })
 
 while ([6, 7].includes(dt.weekday) || Array.from(hd.isHoliday(dt.toISODate()))?.some(h => h.type === "public")) {
   dt = dt.minus({ days: 1 })
 }
 
 cal.createEvent({
-  start: dt.toISODate(),
-  end: dt.toISODate(),
+  start: dt.toISO(),
+  end: dt.plus({ hours: 1 }).toISO(),
   summary: `Mike ${dt.monthShort} Money Transfer`,
-  allDay: true,
 })
 
 writeFileSync("resources/money-transfer.ics", cal.toString())
